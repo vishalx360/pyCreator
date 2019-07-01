@@ -1,0 +1,44 @@
+#!/usr/bin/python3
+
+import sys
+import os
+from distutils.dir_util import copy_tree
+
+
+# ==============important_Stuff=========================
+# version.
+version = "0.1.0"
+# printing version with script name.
+print("pyCreator", version + "\n")
+# ==============================================
+
+
+# setting cwd as project_parent dir
+parent_dir = os.getcwd()
+# files in parent_dir
+parent_dir_files = os.listdir(parent_dir)
+
+# getting project_name from user
+# TODO- add check functionality to check argument suitable or not;
+# it must be one argument
+# which will be name of new project
+library = "/usr/local/lib/pyCreator/lib"
+project_name = str(sys.argv[1])
+
+
+# check if file or folder already exist
+if project_name in parent_dir_files:
+    print("ERROR: file/folder already exist, choose another name for your project")
+    SystemExit()
+else:
+    # logging the directory creation process.
+    print("Creating project " + project_name + " directory.")
+    os.mkdir(project_name)
+
+    # making project_dir variable
+    project_dir = os.path.join(parent_dir, project_name)
+
+    # logging the files creation process.
+    print("Copying" + str(os.listdir(library)) + " to " + project_name)
+    copy_tree(library, project_dir)
+    # copying files from lib to given project_dir
