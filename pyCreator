@@ -19,9 +19,7 @@ parent_dir = os.getcwd()
 parent_dir_files = os.listdir(parent_dir)
 
 # getting project_name from user
-# TODO- add check functionality to check argument suitable or not;
-# it must be one argument
-# which will be name of new project
+
 library = "/usr/local/lib/pyCreator/lib"
 project_name = str(sys.argv[1])
 
